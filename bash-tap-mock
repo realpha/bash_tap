@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # While not directly TAP-specific, being able to mock stuff
 # in tests is pretty useful.

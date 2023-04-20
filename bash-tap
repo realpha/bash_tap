@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bash_tap_version='1.0.2'
 
@@ -273,8 +273,8 @@ function start_output_capture() {
         finish_output_capture
         _bt_caller_error "Can't start output capture while already active"
     fi
-    local stdout_tmpfile="/tmp/bash-itunes-test-out.$$"
-    local stderr_tmpfile="/tmp/bash-itunes-test-err.$$"
+    local stdout_tmpfile="/tmp/bash-tap-test-out.$$"
+    local stderr_tmpfile="/tmp/bash-tap-test-err.$$"
     _bt_add_on_exit_cmd "rm -f '$stdout_tmpfile' '$stderr_tmpfile'"
     _bt_output_capture=1
     exec 3>&1 >$stdout_tmpfile 4>&2 2>$stderr_tmpfile
@@ -289,11 +289,11 @@ function finish_output_capture() {
     exec 1>&3 3>&- 2>&4 4>&-
     _bt_output_capture=0
     if [ -n "$capture_stdout_varname" ]; then
-        local stdout_tmpfile="/tmp/bash-itunes-test-out.$$"
+        local stdout_tmpfile="/tmp/bash-tap-test-out.$$"
         eval "$capture_stdout_varname=\$(< $stdout_tmpfile)"
     fi
     if [ -n "$capture_stderr_varname" ]; then
-        local stderr_tmpfile="/tmp/bash-itunes-test-err.$$"
+        local stderr_tmpfile="/tmp/bash-tap-test-err.$$"
         eval "$capture_stderr_varname=\$(< $stderr_tmpfile)"
     fi
 }

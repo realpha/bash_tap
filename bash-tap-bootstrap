@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 #  Bash TAP Bootstrap:
 #    Copy this file into your project tests dir and source it
